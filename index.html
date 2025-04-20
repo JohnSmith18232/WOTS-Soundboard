@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎤 Josh Block Soundboard 🍻</title>
+  <script>
+    const clips = [
+      {
+        name: "DISABLED!?!?!",
+        quote: "DISABLED!?!?!",
+        category: "Yell",
+        file: "disabled.m4a"
+      },
+      {
+        name: "I'M GONNA FUCKIN RUIN YOU",
+        quote: "I'M GONNA FUCKIN RUIN YOU",
+        category: "Threat",
+        file: "ill_ruin_you.m4a"
+      },
+      {
+        name: "I'M PHONING THE POLICE",
+        quote: "I'M PHONING THE POLICE",
+        category: "Action",
+        file: "phoning_the_police.m4a"
+      },
+      {
+        name: "TAKE ADVANTAGE OF THE MIDDLE CLASS",
+        quote: "TAKE ADVANTAGE OF THE MIDDLE CLASS",
+        category: "Rant",
+        file: "take_advantage_middle_class.m4a"
+      },
+      {
+        name: "WAKE UP AND SMELL THE COFFEE!!!",
+        quote: "WAKE UP AND SMELL THE COFFEE!!!",
+        category: "Shout",
+        file: "wake_up_smell_coffee.m4a"
+      },
+      {
+        name: "IF I GO OUTSIDE, GOOSE IS COOKED!",
+        quote: "IF I GO OUTSIDE, GOOSE IS COOKED!",
+        category: "Shout",
+        file: "goose_is_cooked.m4a"
+      }
+    ];
+
+    function loadClips() {
+      const container = document.getElementById("clips");
+      clips.forEach(clip => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td class="p-3 border whitespace-nowrap max-w-xs overflow-hidden text-ellipsis">${clip.name}</td>
+          <td class="p-3 border whitespace-nowrap max-w-xs overflow-hidden text-ellipsis">${clip.quote}</td>
+          <td class="p-3 border whitespace-nowrap">${clip.category}</td>
+          <td class="p-3 border w-48">
+            <div class="flex justify-center">
+              <audio controls preload="auto" class="w-44">
+                <source src="./clips/${clip.file}" type="audio/mp4">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          </td>
+        `;
+
+        container.appendChild(row);
+      });
+    }
+
+    window.onload = loadClips;
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-white font-sans p-6 min-h-screen">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-extrabold mb-6 text-center tracking-tight">🎤 Josh Block Soundboard 🍻</h1>
+    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+      <table class="min-w-full text-sm table-auto">
+        <thead class="bg-gray-700 text-gray-300">
+          <tr>
+            <th class="p-3 text-left font-semibold">Clip Name</th>
+            <th class="p-3 text-left font-semibold">Quote</th>
+            <th class="p-3 text-left font-semibold">Category</th>
+            <th class="p-3 text-left font-semibold">Play</th>
+          </tr>
+        </thead>
+        <tbody id="clips" class="bg-gray-900 divide-y divide-gray-700"></tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
